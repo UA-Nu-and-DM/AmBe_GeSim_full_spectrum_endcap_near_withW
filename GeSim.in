@@ -1,0 +1,25 @@
+#/control/saveHistory
+/gesim/phys/SelectPhysics QGSP_BIC_HP
+#/gesim/phys/SelectPhysics Hadron
+# material definitions has to be done before /run/initilalize
+/run/initialize
+/grdm/analogueMC 1
+/grdm/verbose 0
+/grdm/allVolumes
+#/grdm/selectVolume Target
+
+# Next lines needed to have  atomic relaxation working 
+/process/em/fluo true
+/process/em/auger true
+
+# first simulate Tl208 gamma on the HPGe detector
+/histo/fileName gamma
+/gps/particle gamma
+#/histo/fileName geantino
+#/gps/particle geantino
+/gps/energy 1 MeV
+/gps/position -21.9 0 0 mm
+/gps/ang/type iso
+#/gps/direction -1 0 0 
+#/tracking/verbose 1
+/run/beamOn 1000000

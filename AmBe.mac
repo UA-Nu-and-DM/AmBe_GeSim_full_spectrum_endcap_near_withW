@@ -1,0 +1,32 @@
+/tracking/verbose 1
+#/gesim/phys/SelectPhysics QGSP_BIC_HP
+
+
+/gesim/detector/selectDetector 3 #for GeIII
+/gesim/analysis/selectDetector 3 #for GeIII
+/gesim/source/setSourcePosition LZAmBe2inOuterWCapsuleEndcap 
+
+#uncomment the following 4 lines to get visualization files (.wrl); comment if you need to simulate a large amount of particles, e.g. > 1000
+/vis/open VRML2FILE
+/vis/drawVolume
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+
+/run/initialize
+/grdm/analogueMC 1
+/grdm/verbose 1
+/grdm/allVolumes
+
+
+/process/em/fluo true
+/process/em/auger true
+
+
+/histo/fileName AmBe # output root file name
+#BEGIN seed
+/random/setSeeds 9097
+#END seed
+
+
+/run/beamOn 100
+
